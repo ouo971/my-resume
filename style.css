@@ -44,6 +44,12 @@
 
 html { scroll-behavior: smooth; }
 
+strong {
+    font-weight: 700;
+    color: #1b4332; /* 가독성을 위해 짙은 포레스트 그린 색상 사용 */
+}
+
+
 body {
     font-family: var(--font);
     background: var(--bg);
@@ -603,44 +609,94 @@ body {
 /* ─── 9. 반응형 ─── */
 @media (max-width: 768px) {
     body {
-        padding: 16px;
+        padding: 12px;
         align-items: flex-start;
     }
 
     .app-container {
-        margin-top: 8px;
-        margin-bottom: 88px;
+        margin-top: 4px;
+        margin-bottom: 80px;
     }
 
     .toggle-btn {
-        bottom: 18px;
-        right: 16px;
-        left: 16px;
+        bottom: 14px;
+        right: 12px;
+        left: 12px;
         justify-content: center;
-        width: calc(100% - 32px);
-        padding: 16px;
-        font-size: 0.95rem;
+        width: calc(100% - 24px);
+        padding: 14px;
+        font-size: 0.9rem;
+        border-radius: var(--radius-md);
     }
 
     .card-wrapper {
-        padding: 0 24px 32px;
+        padding: 0 20px 28px;
+        border-radius: var(--radius-md);
     }
 
     .card-accent-line {
-        margin: 0 -24px 28px;
+        margin: 0 -20px 24px;
+    }
+
+    .name {
+        font-size: 1.6rem;
+    }
+
+    .intro-text {
+        font-size: 0.88rem;
+        line-height: 1.7;
     }
 
     .resume-wrapper {
-        padding: 32px 22px;
+        padding: 28px 16px;
+        border-radius: var(--radius-md);
     }
 
-    .resume-title { font-size: 1.4rem; }
+    .resume-title { font-size: 1.35rem; }
+    
+    .resume-subtitle {
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
 
-    .skills-grid { grid-template-columns: 1fr; }
+    .about-card {
+        padding: 16px;
+    }
+
+    .about-desc {
+        font-size: 0.88rem;
+        line-height: 1.7;
+    }
+
+    .skills-grid { grid-template-columns: 1fr; gap: 12px; }
+    .skill-category { padding: 16px; }
+
+    .project-item {
+        padding: 16px;
+    }
 
     .project-header, .edu-header {
         flex-direction: column;
-        gap: 3px;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .project-name, .edu-institution {
+        font-size: 0.95rem;
+    }
+
+    .project-desc, .edu-desc {
+        font-size: 0.85rem;
+        line-height: 1.65;
+    }
+
+    .project-bullets {
+        padding-left: 14px;
+    }
+
+    .project-bullets li {
+        font-size: 0.82rem;
+        line-height: 1.6;
     }
 
     .resume-header-top {
