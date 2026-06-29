@@ -1,0 +1,660 @@
+/* ==========================================
+   2026 Trend CSS – Mesh Gradient × Bento × Warm Minimal
+   Project: Premium Web Business Card & Resume
+   ========================================== */
+
+/* ─── 1. 디자인 토큰 ─── */
+:root {
+    --bg: #e9edf0;              /* 차갑고 지적인 쿨그레이/애쉬그레이 배경 */
+    --surface: rgba(255, 255, 255, 0.94);
+    --surface-hover: #ffffff;
+    --border: #d2d8db;          /* 쿨그레이 테두리 */
+    --border-hover: #b0bac0;    /* 블루그레이톤 호버 테두리 */
+
+    --primary: #2d6a4f;
+    --primary-light: #40916c;
+    --primary-bg: rgba(45, 106, 79, 0.06);
+    --accent: #64748b;          /* 차분한 슬레이트 블루그레이 악센트 */
+    --accent-bg: rgba(100, 116, 139, 0.08);
+
+    --text: #1a1a1a;
+    --text-secondary: #555555;
+    --text-tertiary: #888888;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 999px;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.04);
+    --shadow-lg: 0 20px 50px rgba(0,0,0,0.06);
+    --shadow-glow: 0 0 0 4px rgba(45,106,79,0.08);
+
+    --font: 'Inter', 'Noto Sans KR', -apple-system, system-ui, sans-serif;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration: 0.35s;
+}
+
+/* ─── 2. 리셋 ─── */
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── 3. 배경 메쉬 그라데이션 ─── */
+.bg-mesh {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(165, 180, 252, 0.08) 0%, transparent 60%), /* 투명한 쿨라벤더 틴트 */
+        radial-gradient(ellipse 50% 60% at 85% 75%, rgba(45, 106, 79, 0.04) 0%, transparent 60%),  /* 극도로 옅은 세이지 그린 */
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(224, 242, 254, 0.1) 0%, transparent 50%);  /* 투명한 쿨스카이 틴트 */
+    animation: meshShift 25s ease-in-out infinite alternate;
+}
+
+@keyframes meshShift {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(8deg); }
+}
+
+/* 그레인 텍스쳐 – 고급 인쇄물 질감 */
+.bg-grain {
+    position: fixed; inset: 0; z-index: -1;
+    opacity: 0.3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* ─── 4. 앱 컨테이너 ─── */
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    min-height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ─── 5. 토글 버튼 ─── */
+.toggle-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all var(--duration) var(--ease);
+}
+
+.toggle-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.toggle-btn:active { transform: translateY(0) scale(0.97); }
+
+.btn-arrow {
+    display: inline-flex;
+    transition: transform var(--duration) var(--ease);
+}
+
+.toggle-btn:hover .btn-arrow { transform: translateX(3px); }
+
+/* ─── 6. 섹션 공통 전환 ─── */
+.card-section, .resume-section {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(0.98);
+    transition:
+        opacity 0.5s var(--ease),
+        transform 0.5s var(--ease),
+        visibility 0.5s;
+    pointer-events: none;
+}
+
+.card-section.active, .resume-section.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* ─── 7. 명함 카드 ─── */
+.card-wrapper {
+    position: relative;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 0 36px 40px;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 상단 악센트 라인 (그라데이션 바) */
+.card-accent-line {
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary-light));
+    margin: 0 -36px 32px;
+}
+
+/* 프로필 영역 */
+.profile-area { margin-bottom: 20px; }
+
+.avatar-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 16px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-md);
+}
+
+/* 온라인 상태 점 */
+.status-dot {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 14px;
+    height: 14px;
+    background: #22c55e;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.job-title {
+    font-size: 0.88rem;
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* 한 줄 소개 */
+.intro-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    word-break: keep-all;
+}
+
+/* 구분선 */
+.divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 -4px 24px;
+}
+
+/* 연락처 카드 – 2줄 레이아웃 */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: all var(--duration) var(--ease);
+}
+
+.contact-icon-wrap {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--primary-bg);
+    color: var(--primary);
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: all var(--duration) var(--ease);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.contact-label {
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.contact-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.contact-item:hover {
+    border-color: var(--primary);
+    background: var(--surface-hover);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-item:hover .contact-icon-wrap {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* 하단 태그 */
+.card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.78rem;
+    background: var(--accent-bg);
+    border: 1px solid rgba(212,163,115,0.15);
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ─── 8. 이력서 ─── */
+.resume-wrapper {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    width: 100%;
+    box-shadow: var(--shadow-md);
+}
+
+.resume-header {
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+    border-bottom: 1.5px solid var(--border);
+}
+
+.resume-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.resume-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.3px;
+}
+
+.resume-badge {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--primary-bg);
+    color: var(--primary);
+    border: 1px solid rgba(45,106,79,0.12);
+}
+
+.resume-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.resume-content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* 블록 */
+.resume-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.block-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary);
+    width: fit-content;
+}
+
+/* 자기소개 카드 */
+.about-card {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-desc {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    word-break: keep-all;
+}
+
+.about-desc strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* 기술 스택 */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.skill-category {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: all var(--duration) var(--ease);
+}
+
+.skill-category:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-category h4 {
+    color: var(--text);
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-tag {
+    font-size: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all var(--duration) var(--ease);
+}
+
+.skill-tag.accent {
+    background: var(--primary-bg);
+    border-color: rgba(45,106,79,0.12);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.skill-tag:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* 프로젝트 */
+.project-item {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    transition: all var(--duration) var(--ease);
+}
+
+.project-item:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.project-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.project-date {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.project-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.project-bullets {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-bullets li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.project-bullets li::marker {
+    color: var(--primary);
+}
+
+/* 학력 – 타임라인 스타일 */
+.edu-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+}
+
+.edu-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0 16px 16px;
+}
+
+.edu-item:last-child { padding-bottom: 4px; }
+
+.edu-dot {
+    position: absolute;
+    left: -19px;
+    top: 22px;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--primary-bg);
+}
+
+.edu-content { flex: 1; }
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.edu-institution {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.edu-date {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.edu-desc {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* ─── 9. 반응형 ─── */
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .app-container {
+        margin-top: 8px;
+        margin-bottom: 88px;
+    }
+
+    .toggle-btn {
+        bottom: 18px;
+        right: 16px;
+        left: 16px;
+        justify-content: center;
+        width: calc(100% - 32px);
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+
+    .card-wrapper {
+        padding: 0 24px 32px;
+    }
+
+    .card-accent-line {
+        margin: 0 -24px 28px;
+    }
+
+    .resume-wrapper {
+        padding: 32px 22px;
+    }
+
+    .resume-title { font-size: 1.4rem; }
+
+    .skills-grid { grid-template-columns: 1fr; }
+
+    .project-header, .edu-header {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .resume-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* ─── 10. 스크롤바 커스텀 ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }

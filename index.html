@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박유진 | 웹 명함 & 이력서</title>
+    <meta name="description" content="AI 사무자동화 역량을 갖춘 스마트 사무지원 인재, 박유진의 웹 명함과 이력서입니다.">
+    <!-- Open Graph (OG) 태그 (카카오톡, 링크드인 링크 공유 시 미리보기 설정) -->
+    <meta property="og:title" content="박유진 | 웹 명함 & 이력서">
+    <meta property="og:description" content="AI 사무자동화 역량을 갖춘 스마트 사무지원 인재, 박유진입니다.">
+    <meta property="og:image" content="assets/profile.png">
+    <meta property="og:type" content="website">
+    <!-- 구글 폰트 불러오기 (Pretendard & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 스타일시트 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 배경 메쉬 그라데이션 장식 -->
+    <div class="bg-mesh"></div>
+    <div class="bg-grain"></div>
+
+    <!-- 전체 컨테이너 -->
+    <div class="app-container" id="appContainer">
+        
+        <!-- 고정 토글 버튼 -->
+        <button class="toggle-btn" id="toggleBtn" aria-label="화면 전환">
+            <span class="btn-text">📄 이력서 보기</span>
+            <span class="btn-arrow">→</span>
+        </button>
+
+        <!-- ━━━━━━━━━ [명함 섹션] ━━━━━━━━━ -->
+        <section class="card-section active" id="cardSection">
+            <div class="card-wrapper">
+                <!-- 상단 장식 라인 -->
+                <div class="card-accent-line"></div>
+
+                <div class="profile-area">
+                    <div class="avatar-container">
+                        <img src="assets/profile.png" alt="박유진 프로필 사진" class="profile-img" onerror="this.src='https://picsum.photos/300/300'">
+                        <div class="status-dot"></div>
+                    </div>
+                    <h1 class="name">박유진</h1>
+                    <p class="job-title">💡 AI 사무자동화 역량을 갖춘 스마트 사무직 인재</p>
+                </div>
+                
+                <div class="intro-text">
+                    <p>이전 CS 경력으로 다진 꼼꼼한 소통 능력 🤝 에<br>AI 사무자동화 역량을 더해 💻<br>문서·데이터를 정확하고 빠르게 관리하는 사무 전문가입니다.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="contact-links">
+                    <a href="mailto:ouojin971@gmail.com" class="contact-item" title="이메일 보내기">
+                        <div class="contact-icon-wrap">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-label">이메일</span>
+                            <span class="contact-value">ouojin971@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:010-xxxx-xxxx" class="contact-item" title="전화하기">
+                        <div class="contact-icon-wrap">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-label">전화번호</span>
+                            <span class="contact-value">010-xxxx-xxxx</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-footer">
+                    <span class="tag">#사무직</span>
+                    <span class="tag">#AI사무자동화</span>
+                    <span class="tag">#사무지원</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ━━━━━━━━━ [이력서 섹션] ━━━━━━━━━ -->
+        <section class="resume-section" id="resumeSection">
+            <div class="resume-wrapper">
+
+                <!-- 이력서 헤더 -->
+                <header class="resume-header">
+                    <div class="resume-header-top">
+                        <h2 class="resume-title">이력서</h2>
+                        <span class="resume-badge">📍 구직 중</span>
+                    </div>
+                    <p class="resume-subtitle">✨ 업무의 정확성과 신속함을 겸비한 사무지원 전문가, 박유진입니다.</p>
+                </header>
+
+                <!-- 이력서 본문 -->
+                <div class="resume-content">
+
+                    <!-- 자기소개 -->
+                    <div class="resume-block">
+                        <h3 class="block-title">📝 자기소개</h3>
+                        <div class="about-card">
+                            <p class="about-desc">
+                                이전 고객 서비스(CS) 경험을 바탕으로 꼼꼼한 문서 관리, 일정 조율 및 고객·협업 부서 간 원활한 커뮤니케이션 능력을 갖추었습니다. 
+                            </p>
+                            <p class="about-desc">
+                                최근 AI 사무자동화 과정을 이수하며 AI 도구(ChatGPT, Antigravity 에이전트 등)를 활용해 기존의 비효율적인 사무 처리 과정을 획기적으로 개선하고 신속화하는 방법을 정립했습니다.
+                            </p>
+                            <p class="about-desc">
+                                데이터 입력, 서류 작성, 일반 행정 지원 등 부서 전체가 매끄럽게 돌아갈 수 있도록 스마트하게 뒷받침하는 <strong>준비된 사무보조·사무지원 인재</strong>입니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 핵심 역량 -->
+                    <div class="resume-block">
+                        <h3 class="block-title">🛠️ 보유 기술 및 역량</h3>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>📋 행정 실무 & CS</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">일반사무 및 행정 지원</span>
+                                    <span class="skill-tag">MS Office (Excel, Word)</span>
+                                    <span class="skill-tag">스케줄 관리 & 서면 응대</span>
+                                    <span class="skill-tag">협업 툴 (Notion, Slack)</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>🤖 AI 및 디지털 도구</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag accent">AI 사무자동화 (ChatGPT, Claude)</span>
+                                    <span class="skill-tag accent">Antigravity AI 에이전트 활용</span>
+                                    <span class="skill-tag">데이터 정리 및 자동화</span>
+                                    <span class="skill-tag">기초 웹 제작 (HTML/CSS)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 주요 프로젝트 -->
+                    <div class="resume-block">
+                        <h3 class="block-title">📁 주요 프로젝트</h3>
+
+                        <!-- 프로젝트 1: 고객 불만 관리 자동화 -->
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h4 class="project-name">고객 불만(VOC) 분류 및 응대 자동화 에이전트 설계</h4>
+                                <span class="project-date">2026.06 · 교육과정 실습</span>
+                            </div>
+                            <p class="project-desc">이전 CS 경력에서 체감했던 민원 처리의 비효율을 Antigravity AI 에이전트로 해결한 프로젝트입니다. 접수된 고객 불만 메일을 AI가 자동 분류하고, 맞춤형 사과 메일 초안 작성 및 관리대장 기록까지 일원화하는 워크플로우를 설계했습니다.</p>
+                            <ul class="project-bullets">
+                                <li>Gmail 연동으로 불만 키워드(환불·오배송·불편 등) 포함 메일 자동 감지 및 유형·심각도 분류 로직 구현</li>
+                                <li>구글 스프레드시트 '고객 불만 관리대장'에 접수일·고객정보·처리상태를 자동 기록하는 데이터 파이프라인 설계</li>
+                                <li>긴급 민원 발생 시 팀장에게 즉시 경고 메일을 자동 발송하는 에스컬레이션 프로세스 구축</li>
+                            </ul>
+                        </div>
+
+                        <!-- 프로젝트 2: 주간 업무 보고 자동화 -->
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h4 class="project-name">주간 실적 보고서 자동 수집·작성 에이전트 설계</h4>
+                                <span class="project-date">2026.06 · 교육과정 실습</span>
+                            </div>
+                            <p class="project-desc">여러 시스템에 흩어진 업무 데이터를 AI 에이전트가 자동으로 수집·가공하여 체계적인 주간 보고서 초안을 작성하는 사무 자동화 워크플로우를 설계했습니다.</p>
+                            <ul class="project-bullets">
+                                <li>구글 스프레드시트·Gmail·캘린더 등 멀티 소스에서 실적 데이터 및 회의 결과를 자동 추출하는 에이전트 프롬프트 설계</li>
+                                <li>비즈니스 보고 톤앤매너(명사형 종결어미)를 적용한 구글 문서 형태의 보고서 자동 생성 로직 구현</li>
+                                <li>매주 금요일 오후 정기 실행되는 스케줄 자동화(크론 예약) 설정까지 학습 완료</li>
+                            </ul>
+                        </div>
+
+                        <!-- 프로젝트 3: 웹 명함 제작 -->
+                        <div class="project-item">
+                            <div class="project-header">
+                                <h4 class="project-name">AI 에이전트 협업 기반 모바일 웹 명함·이력서 제작</h4>
+                                <span class="project-date">2026.06 · 개인</span>
+                            </div>
+                            <p class="project-desc">비전공자 관점에서 Antigravity AI 에이전트와 대화하며 프롬프트를 제어하여, 디자인 설계부터 코드 구현·웹 배포까지 단기간에 완성한 포트폴리오 프로젝트입니다.</p>
+                            <ul class="project-bullets">
+                                <li>AI 에이전트에게 구체적인 디자인 요구사항과 기능을 전달하며 반복적으로 품질을 개선하는 협업 프로세스 경험</li>
+                                <li>명함 ↔ 이력서 탭 전환, 모바일 반응형 레이아웃 등 실무에서 바로 활용 가능한 웹 기초 역량 습득</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- 학력 및 교육 -->
+                    <div class="resume-block">
+                        <h3 class="block-title">🎓 학력 및 교육</h3>
+                        <div class="edu-timeline">
+                            <div class="edu-item">
+                                <div class="edu-dot"></div>
+                                <div class="edu-content">
+                                    <div class="edu-header">
+                                        <h4 class="edu-institution">AI 사무자동화 부트캠프</h4>
+                                        <span class="edu-date">2026.03 – 2026.06</span>
+                                    </div>
+                                    <p class="edu-desc">파이썬 및 다양한 AI 도구를 활용한 업무 자동화 및 웹 기초 개발 과정 수료</p>
+                                </div>
+                            </div>
+                            <div class="edu-item">
+                                <div class="edu-dot"></div>
+                                <div class="edu-content">
+                                    <div class="edu-header">
+                                        <h4 class="edu-institution">한국대학교 (경영학 전공)</h4>
+                                        <span class="edu-date">2018.03 – 2024.02</span>
+                                    </div>
+                                    <p class="edu-desc">학사 학위 졸업</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 스크립트 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
